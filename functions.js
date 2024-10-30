@@ -106,6 +106,11 @@ function arrSort(arr, compareCallback) {
 }
 arrSort(dataSet, compareByAge);
 console.log(dataSet);
+
+// second way to do it using the sort method
+const sortedData = dataSet.sort((a, b) => {
+    return a.age - b.age;
+});
 //2. Filter the array to remove entries with an age greater than 50.
 // use array methods and callback functions to filter the array and return only the objects with an age less than or equal to 50.
 
@@ -126,6 +131,11 @@ function filterAge(obj) {
 let filteredArr = filterByAge(dataSet, filterAge);
 console.log(filteredArr);
 
+// second way to do it using the filter method
+const filteredData = dataSet.filter (person =>{
+    return person.age <= 50;
+})
+console.log(filteredData);
 
 // 3. Map the array to change the “occupation” key to “job” and increment every age by 1.
 
@@ -137,15 +147,23 @@ function mapArr(arr, mapCallback) {
     return newArr;
 }
 // this is the helper function which will be nester inside the main function mapArr
-function mapOccupation(obj) {
+// function mapOccupation(obj) {
+//     obj.job = obj.occupation;
+//     delete obj.occupation;
+//     obj.age = parseInt(obj.age) + 1;
+//     return obj;
+// }
+// let mappedArr = mapArr(dataSet, mapOccupation);
+// console.log(mappedArr);
+
+// second way to do it using the map method
+const mappedArr2 = dataSet.map((obj) => {
     obj.job = obj.occupation;
     delete obj.occupation;
     obj.age = parseInt(obj.age) + 1;
     return obj;
-}
-let mappedArr = mapArr(dataSet, mapOccupation);
-console.log(mappedArr);
-
+});
+console.log(mappedArr2);
 
 // 4. Use the reduce method to calculate the sum of the ages.
 const totalAge = dataSet.reduce((accumulator, obj) => {

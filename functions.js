@@ -176,4 +176,27 @@ console.log(totalAge);
 const averageAge = totalAge / dataSet.length;
 console.log(averageAge);
 
+//Part 3: Thinking Critically
+
+// 1. Take an object and increment its age field.
+const person = { id: "42", name: "Bruce", occupation: "Knight", age: "41" };
+function incrementAge(obj){
+    obj.age = parseInt(obj.age) + 1;
+    obj.updated_at = new Date();
+    return obj;
+}
+console.log(incrementAge(person));
+
+// 2. Take an object, make a copy, and increment the age field of the copy. Return the copy.
+const copyOfPerson = {...person}
+
+let copyIncrementAge = incrementAge(copyOfPerson);
+
+console.log(copyIncrementAge);
+
+
+// Thought experiment: since the Date object is an object, what would happen if we modified it in the copy of the object created in the
+// second function using setTime() or another method? How could we circumvent potentially undesired behavior?
+// If we modify the Date object in the copy of the object created in the second function, it will also modify the original object.
+
 
